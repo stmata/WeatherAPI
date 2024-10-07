@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from datetime import datetime
 from dotenv import load_dotenv
 import requests
-
+import uvicorn
 load_dotenv()
 
 app = FastAPI()
@@ -11,7 +11,7 @@ app = FastAPI()
 # You can use an actual weather API (like OpenWeatherMap) for real weather data.
 # For the purpose of this example, we'll simulate a weather response.
 
-CITY = 'Montreal'
+CITY = 'Alger'
 API_KEY = '4a48e3ce448659890c354b5c8605231a'  # Replace with your real API key
 
 def get_weather():
@@ -54,3 +54,5 @@ async def get_info():
         "time": formatted_time,
         "weather": weather
     }
+if __name__ =='__main__':
+     uvicorn.run(app, host='0.0.0.0', port =8020, workers=1)
